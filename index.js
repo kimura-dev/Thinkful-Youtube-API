@@ -8,9 +8,14 @@
             })
             $('.tokenClass').click(function (e) {
                 e.preventDeafault();
-                pageToken.current = $(this).text() == 'Next' ? pageToken.nextPage : pageToken.prevPage;
+                if($(this).text() == 'Next'){
+                    pageToken.nextPage;
+                }
+                else{
+                    pageToken.prevPage;
+                }
                 searchYoutube();
-            })
+            }) 
             $('.overlayBg').click(function () {
                 $('.popup').hide()
                 $('.overlayBg').hide()
@@ -37,6 +42,33 @@
                     , pageToken: pageToken.current
                 }
             }).done(function (data) {
+                console.log(pageToken.current);
+                pageToken.nextPage = data.nextPageToken;
+                console.log(data.nextPageToken);
+                pageToken.prevPage = data.prevPageToken;
+                var html = '';
+                $.each(data['items'], function (index, value) {
+                    let title = value.snippet.title;
+                    let thumbnail = value.snippet.thumbnails.medium.url;
+                    let videoId = value.id.videoId;
+                    html += `<div><div class="title">${title}</div>
+                    <div><div class="url"><a href="https://www.youtube.com/watch?v=${videoId} target="_blank">${videoId}</a></div>
+                    <div><img  class="thumbnail" src="${thumbnail}" videoID=${videoId}></div>
+                    </div>`;
+                })
+                $('#output').html(html);
+            })
+
+        }
+
+                        /*  <div class="section group">
+                                <div class="col span_1_of_4">1 of 4</div>
+                                <div class="col span_1_of_4">1 of 4</div>
+                                <div class="col span_1_of_4">1 of 4</div>
+                                <div class="col span_1_of_4">1 of 4</div>
+                            </div>
+                                    
+                  .done(function (data) {
                 pageToken.nextPage = data.nextPageToken;
                 pageToken.prevPage = data.prevPageToken;
                 console.log(pageToken)
@@ -49,4 +81,5 @@
                 })
                 $('#output').html(html);
             })
-        }
+        }  */         
+                        
