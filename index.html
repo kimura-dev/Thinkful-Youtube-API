@@ -2,34 +2,37 @@
 <html lang="en">
 <head>
     <meta charset=utf-8>
-    <meta name=description content="Youtube video search app">
+    <meta name=description content="Search what ever you'd like on youtube.">
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <title>jQuery AJAX getting web APIs</title>
+    <title>Youtube Search</title>
     <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.0/normalize.css">
+    <link rel="stylesheet" type="text/css" href="grid.css">
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-    <form>
-        <h1>jQuery AJAX APIs</h1> What did you want to find?
-        <input type="text" name="search" id="search">
-        <button id="searchButton">Search</button>
-        <div class="buttonOptions">
-            <button class="tokenClass">Prev</button>
-            <button class="tokenClass">Next</button>
+    <header>
+        <form>
+            <div class="search-box">
+                <h1>Search Youtube</h1> 
+                <p>What did you want to find?</p>
+                <input type="text" name="search" id="search">
+                <input type="button" value="Search" id="searchButton">
+            </div>
+            <div id="buttonOptions">
+                <input type="button" class="tokenClass" value="Previous">
+                <input type="button" class="tokenClass" value="Next"> 
+            </div>
+        </form>
+    </header>
+    <section>
+        <div id="output" class="section group"></div>
+        <div class="overlayBg"></div>
+        <div class="popup"> 
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/WEkSYw3o5is" rel="0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
-    </form>
-    <section id="output"></section>
-    <div class="overlayBg"></div>
-    <div class="popup"> 
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/WEkSYw3o5is" rel="0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
+    </section>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="index.js"></script>
-    <script>
-          
-        //https://www.googleapis.com/youtube/v3/search?q=test&part=snippet&key=******YOUR**API**KEY**VALUE********
-        //https://www.googleapis.com/youtube/v3/search?q=test&part=snippet&key=AIzaSyA9YIeJMUAUAO5QaCo0wzfbdGlLIbjo1D4
-    </script>
-
 </body>
 </html>
